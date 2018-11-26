@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import LoginForm from './login.js';
+import LoginForm from './sign_in_form.js';
+import SignupForm from "./sign_up_form.js";
 
 class Home extends React.PureComponent {
     constructor(props) {
@@ -28,7 +29,7 @@ class Home extends React.PureComponent {
             )
         } else {
             return (
-                <h1>SIGNUP PAGE</h1>
+                <SignupForm choosePage={this.open.bind(this)}/>
             )
         }
 
