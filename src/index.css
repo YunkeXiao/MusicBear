@@ -1,14 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background: blueviolet;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/*----------------------------------------------------LOGIN PAGE--------------------------------------------------*/
+
+#loginPage {
+    position: relative;
+    background: #FFFFFF;
+    height: 35vh;
+    width: 30vw;
+    margin: 25vh auto 0 auto;
+    padding: 10vh;
+    text-align: left;
 }
+
+.loginInput {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1rem;
+
+}
+
+.loginInput:focus {
+    animation-name: textFocus;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes textFocus {
+    from {
+        box-shadow: 0 0 0 transparent;
+        border: 0 none transparent;
+    }
+    to {
+        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        /*border: 1px solid rgba(81, 203, 238, 1);*/
+    }
+}
+
+#loginButton {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#loginButton:hover, #loginButton:active, #loginButton:focus {
+    background: #43A047;
+}
+
+
+
+
