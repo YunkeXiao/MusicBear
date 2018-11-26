@@ -48,7 +48,7 @@ class LoginForm extends React.PureComponent {
                                placeholder='Enter your password' className="userInput"/>
                     </label>
                     <input type='submit' value='Sign in' className='formButton'/>
-                    <a href='#' id='signUpLink' onClick={() => choosePage(2)}>click here to sign up</a>
+                    <h3 id='signUpLink' onClick={() => choosePage(2)}>click here to sign up</h3>
                 </form>
             </div>
         )

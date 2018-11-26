@@ -105,9 +105,13 @@ body {
 }
 
 #signUpLink {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: lighter;
     float: right;
     text-decoration: none;
     color: gray;
+    cursor: pointer;
 }
 
 #signUpLink:hover{
@@ -122,7 +126,7 @@ body {
     position: relative;
     background: #FFFFFF;
     width: 25vw;
-    margin: 15vh auto 0 auto;
+    margin: 7vh auto 0 auto;
     padding: 10vh;
     text-align: left;
 

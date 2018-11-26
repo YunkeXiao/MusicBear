@@ -51,7 +51,7 @@ class SignupForm extends React.PureComponent {
         return (
             <div id='signupPage'>
                 <form onSubmit={(e) => this.handleLogin(e)}>
-                    <h2 className='formBack' href='#' onClick={() => choosePage(1)}>Home <i className="fas fa-times"/>
+                    <h2 className='formBack' onClick={() => choosePage(0)}>Home <i className="fas fa-times"/>
                     </h2>
                     <h1 className='formTitle'>Sign up</h1>
                     <label className='formlabel'>
@@ -71,7 +71,8 @@ class SignupForm extends React.PureComponent {
                                onChange={(e) => this.handleInputChange(2, e)}
                                placeholder='Confirm your password' className={this.state.mode[2]}/>
                     </label>
-                    <input type='submit' value='Sign up' class='formButton'/>
+                    <input type='submit' value='Sign up' className='formButton'/>
+                    <h3 id='signUpLink' onClick={() => choosePage(1)}>click here to sign in</h3>
                 </form>
             </div>
         )
