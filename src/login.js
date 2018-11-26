@@ -6,7 +6,6 @@ class LoginForm extends React.PureComponent {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
         this.state = {
             username: '',
             password: ''
@@ -30,9 +29,12 @@ class LoginForm extends React.PureComponent {
     }
 
     render() {
+        let choosePage = this.props.choosePage;
         return (
             <div id='loginPage'>
                 <form onSubmit={(e) => this.handleLogin(e)}>
+                    <h2 id='loginBack'>Back <i className="fas fa-times"/></h2>
+                    <h1 id='loginTitle'>Sign in</h1>
                     <label className='loginLabel'>
                         Username
                         <input type='text' value={this.state.username} onChange={(e) => this.handleInputChange(0, e)}
@@ -44,6 +46,7 @@ class LoginForm extends React.PureComponent {
                                placeholder='Enter your password' className="loginInput"/>
                     </label>
                     <input type='submit' value='Login' id='loginButton'/>
+                    <a href='#' id='signUpLink' onClick={()=>choosePage(2)}>click here to sign up</a>
                 </form>
             </div>
         )
