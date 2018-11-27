@@ -69,7 +69,7 @@ const exampleData = {
             pointHitRadius: 10,
             data: [40000, 50000, 45000, 35000, 36000, 39000, 37000]
         }
-    ]
+    ],
 };
 
 function Landing(props) {
@@ -87,7 +87,8 @@ function Landing(props) {
                     <Line
                         data={exampleData}
                         options={{
-                            maintainAspectRatio: false
+                            maintainAspectRatio: false,
+                            animation: false,
                         }}
                     />
                 </div>
