@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 
 class SignupForm extends React.PureComponent {
     constructor(props) {
@@ -28,6 +27,7 @@ class SignupForm extends React.PureComponent {
     }
 
     // Handles sign up
+    //NEED TO HANDLE ERRORS
     handleLogin(event) {
         event.preventDefault();
         if (this.state.password !== this.state.confirmPassword) {

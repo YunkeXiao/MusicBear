@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 
 class LoginForm extends React.PureComponent {
     constructor(props) {
@@ -7,7 +6,7 @@ class LoginForm extends React.PureComponent {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.state = {
-            error: 0, // 0: No attempt to login, 1:
+            error: 0, // 0: No attempt to login, 1: Wrong password, 2: Non-existent user
             username: '',
             password: ''
         }
@@ -24,6 +23,7 @@ class LoginForm extends React.PureComponent {
     }
 
     // Handles login
+    // NEED TO HANDLE ERRORS
     handleLogin(event) {
         event.preventDefault();
         this.setState({username: '', password: ''})
