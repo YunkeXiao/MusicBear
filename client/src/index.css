@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Medula+One');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Cormorant');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background: white;
+}
+
+/*----------------------------------------------------LOGIN PAGE--------------------------------------------------*/
+
+#loginPage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: white;
+    width: 25vw;
+    margin: 15vh auto 0 auto;
+    padding: 10vh;
+    text-align: left;
+
+}
+
+.formBack{
+    color: darkgray;
+    float: right;
+    margin: -5vh 0 0 0;
+    cursor: pointer;
+}
+
+.formBack i{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.formBack:hover, .formBack i:hover{
+    color: gray;
+}
+
+.formTitle{
+    font-size: 3.5rem;
+    margin: 0 0 5rem 0;
+}
+
+.form {
+    font-size: 1.3em;
+    height: 1.5rem;
+}
+
+.userInput {
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 1rem 0 2.5rem 0;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.userInput:focus {
+    animation-name: textFocus;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes textFocus {
+    from {
+        box-shadow: 0 0 0 transparent;
+        border: 0 none transparent;
+    }
+    to {
+        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    }
+}
+
+.invalidInput{
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 1rem 0 2.5rem 0;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    box-shadow: 0 0 5px red;
+}
+
+.formButton {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: dodgerblue;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+.formButton:hover, .formButton:active, .formButton:focus {
+    background: deepskyblue;
+}
+
+#signUpLink {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: lighter;
+    float: right;
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+}
+
+#signUpLink:hover{
+    text-decoration: underline;
+}
+
+/*----------------------------------------------------SIGN UP PAGE--------------------------------------------------*/
+
+#signupPage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #FFFFFF;
+    width: 25vw;
+    margin: 7vh auto 0 auto;
+    padding: 10vh;
+    text-align: left;
+
+}
+
+/*----------------------------------------------------LOGO--------------------------------------------------*/
+#logo{
+    font-family: 'Medula One', monospace;
+    font-size: 3rem;
+    text-decoration: underline overline;
+    font-weight: normal;
+    color: white;
+    margin: 0;
+    flex-basis: 34%;
+    cursor: pointer;
+}
+
+#logo:hover, #logo:active{
+    color: dodgerblue;
+}
+
+/*----------------------------------------------------NAVBAR--------------------------------------------------*/
+#navbar{
+    margin:0;
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #222222;
+    z-index: 1;
+}
+
+.navItem{
+    padding: 1.5rem 3rem;
+    margin: 0;
+    background-color: #222222;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-left: 0.1px solid #333333;
+}
+
+.navItem:hover, .navItem:active{
+    color: dodgerblue;
+    background-color: #333333;
+}
+
+/*----------------------------------------------------CHART--------------------------------------------------*/
+#exampleChart{
+    height: 50vh;
+    width: 60vw;
+}
+
+/*----------------------------------------------------LANDING PAGE--------------------------------------------------*/
+#landingPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw;
+    background-color: white;
+}
+
+#introduction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+}
+
+.title{
+    margin: 0;
+    font-family: 'Cormorant', monospace;
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 2.2rem;
+}
+
+#bigTitle {
+    margin: 5rem 0 8rem -35rem;
+}
+
+.blueUnderline{
+    margin: 0;
+    text-decoration: underline;
+    text-decoration-color: dodgerblue;
+}
+
+#main{
+    margin:0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    max-width: 100%;
+    background-color: white;
+}
+
+.mainHeader{
+    padding-top: 5rem;
+    font-family: 'Playfair Display', monospace;
+    font-size: 4rem;
+    font-weight: normal;
+    color: dodgerblue;
+    margin: 0 0 1rem -40rem;
+}
+
+.mainText{
+    font-family: 'Roboto Light', monospace;
+    font-size: 1.25rem;
+    max-width: 60vw;
+    line-height: 2rem;
+    padding-bottom: 5rem;
+}
+
+.pageBreak{
+    width: 50vw;
+    border-top: 2px solid black;
+}
+
+#fill{
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    background-color: dodgerblue;
+}
