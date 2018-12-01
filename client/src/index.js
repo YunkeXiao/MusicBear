@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import LoginForm from './sign_in_form.js';
-import SignupForm from "./sign_up_form.js";
-import Landing from './landing.js';
+import './home/home.css';
+import LoginForm from './home/sign_in_form.js';
+import SignupForm from "./home/sign_up_form.js";
+import Landing from './home/landing.js';
+import Portfolio from './portfolio/portfolio.js';
 import * as helper from './helpers.js';
 
 class Home extends React.PureComponent {
@@ -30,10 +31,14 @@ class Home extends React.PureComponent {
             return (
                 <LoginForm choosePage={this.open.bind(this)}/>
             )
-        } else {
+        } else if (this.state.page === 2) {
             helper.changeBackground('#333333');
             return (
                 <SignupForm choosePage={this.open.bind(this)}/>
+            )
+        } else if (this.state.page === 3){
+            return(
+                <Portfolio/>
             )
         }
 
