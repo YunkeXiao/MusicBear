@@ -30,6 +30,7 @@ class LoginForm extends React.PureComponent {
         }
     }
 
+
     // Manages page state
     choosePage(page) {
         this.props.choosePage(page)
@@ -55,7 +56,6 @@ class LoginForm extends React.PureComponent {
             correctPassword = json['answer'];
             if (correctPassword === 'true') {
                 this.choosePage(3);
-                this.setState({username: '', password: ''});
             }
             else {
                 this.setState({username: '', password: '', mode: ['invalidInput', 'invalidInput']})

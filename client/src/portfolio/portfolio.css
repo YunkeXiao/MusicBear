@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Medula+One');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Cormorant');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background: white;
+}
+
+/*----------------------------------------------------LOGO--------------------------------------------------*/
+#portfolioLogo {
+    font-family: 'Medula One', monospace;
+    font-size: 3rem;
+    text-decoration: underline overline;
+    font-weight: normal;
+    color: white;
+    margin: 0;
+    flex-basis: 42%;
+    cursor: pointer;
+}
+
+#portfolio-logo:hover, #portfolio-logo:active {
+    color: dodgerblue;
+}
+/*----------------------------------------------------NAVBAR--------------------------------------------------*/
+#portfolioNavbar {
+    margin: 0;
+    width: 100vw;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #222222;
+    z-index: 1;
+}
+
+/*----------------------------------------------------PORTFOLIO-------------------------------------------------*/
+
+#portfolioTitle{
+    font-family: 'Montserrat', monospace;
+    font-weight: normal;
+    font-size: 4rem;
+    margin: 2rem 5rem;
+}
+#portfolioChart{
+    height: 60vh;
+    width: 50vw;
+}
+#chartStuff{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 5rem 2rem 5rem;
+}
+
+/*----------------------------------------------------SEARCH-------------------------------------------------*/
+
+#search{
+    margin-left: 5rem;
+}
+
+#searchInputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#searchInput{
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 1rem 15rem 1rem 1rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+#searchInput:focus {
+    animation-name: textFocus;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#searchButton{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: dodgerblue;
+    padding: 1rem 3rem;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#searchButton:hover, #searchButton:active, #searchButton:focus {
+    background: deepskyblue;
+}
+
+#artistList{
+    margin: 0;
+    padding: 0;
+    max-height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.artistItem{
+    background: #FFFFFF;
+    padding: 1rem 2rem;
+    margin:0;
+    font-size: 1.5rem;
+    list-style-type: none;
+    border-left: #999999 solid 0.1rem;
+    border-bottom: #999999 solid 0.1rem;
+}
+.artistItem:focus, .artistItem:hover{
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+#searchInput:focus {
+    animation-name: textFocus;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}

@@ -4,7 +4,7 @@ let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 let xhr = new XMLHttpRequest();
 
 String.prototype.hashCode = function () {
-    var hash = 0, i, chr;
+    let hash = 0, i, chr;
     if (this.length === 0) return hash;
     for (i = 0; i < this.length; i++) {
         chr = this.charCodeAt(i);
@@ -27,12 +27,12 @@ class SignupForm extends React.PureComponent {
             confirmPassword: '',
             mode: ['userInput', "userInput", "userInput"],
             // 0: No errors, 1: Username is already taken, 2: Wrong passwords; 3: Empty username; 4: Empty password
-            error: 0
+            error: 0,
         }
     }
 
     // Manages page state
-    choosePage(page){
+    choosePage(page) {
         this.props.choosePage(page)
     }
 
@@ -53,9 +53,28 @@ class SignupForm extends React.PureComponent {
         let url = 'http://localhost:5000/api/users';
         xhr.open('POST', url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = function () {
-            let json = JSON.parse(this.responseText);
-            console.log('username: ' + json['username'] + ' password: ' + json['password']);
+        xhr.onload = () => {
+            let json = JSON.parse(xhr.responseText);
+            console.log('username: ' + json['username'] + ' password: ' + json['password'] + ' error: ' + json['error']);
+            if (json['error'] === '0') {
+                this.setState({
+                    username: '',
+                    password: '',
+                    confirmPassword: '',
+                    mode: ['userInput', 'userInput', 'userInput'],
+                    error: 0
+                });
+                this.choosePage(1);
+            }
+            else if (json['error'] === '1') {
+                this.setState({
+                    username: '',
+                    password: '',
+                    confirmPassword: '',
+                    mode: ['invalidInput', 'invalidInput', 'invalidInput'],
+                    error: 1
+                });
+            }
         };
         xhr.send(JSON.stringify({"username": username, "password": password.hashCode().toString()}));
     };
@@ -82,19 +101,11 @@ class SignupForm extends React.PureComponent {
             })
         } else {
             this.sendPost(this.state.username, this.state.password);
-            this.setState({
-                username: '',
-                password: '',
-                confirmPassword: '',
-                mode: ['userInput', 'userInput', 'userInput'],
-                error: 0
-            });
-            this.choosePage(1);
+            this.forceUpdate();
         }
     }
 
     render() {
-        // let choosePage = this.props.choosePage;
         return (
             <div id='signupPage'>
                 <form onSubmit={(e) => this.handleSignup(e)}>

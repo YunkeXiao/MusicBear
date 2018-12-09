@@ -79,7 +79,7 @@ function Landing(props) {
             <div id='introduction'>
                 <Navbar choosePage={choosePage}/>
                 <h1 className='title'>Test your knowledge<br/> of the <span className="blueUnderline">
-                    music market</span><br/> using MusicBear</h1>
+                    music market</span></h1>
                 <div className="chart" id='exampleChart'>
                     <Line
                         data={exampleData}
