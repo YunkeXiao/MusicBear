@@ -12,7 +12,7 @@ export function capitalize(string) {
 
 // Used to get labels and dates
 export function getPastWeek() {
-    return '0123456'.split('').map(function (n) {
+    return '1234567'.split('').map(function (n) {
         let d = new Date();
         d.setDate(d.getDate() - n);
 

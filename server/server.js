@@ -35,7 +35,7 @@ for (let page = 1; page <= maxPage; page++) {
 }
 
 // API for artists
-app.get('/api/artistList', (req, res) => {
+app.get('/api/artistlist', (req, res) => {
     res.json(topArtists);
 });
 
