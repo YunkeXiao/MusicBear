@@ -11,3 +11,6 @@ The full response of a GET request to '/api/artists/' should include a JSON obje
 should follow the Last.fm Web API convention: every character is lowercase and spaces are replace by '+', a plus sign,
 and it should contain the attribute 'listeners', which should be an array of the number of listeners to the specified
 artist the past 7 days (excluding the current day).
+
+To run the server/client/both, refer to the package.json in the server folder.
+'npm run server', 'npm run client', 'npm run dev', respectively

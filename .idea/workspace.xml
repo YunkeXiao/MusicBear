@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ada23200-a752-4297-a8b6-2593a679d9ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ReadMe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/@types/tapable/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@types/tapable/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/@types/tapable/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@types/tapable/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/@types/tapable/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/@types/tapable/index.d.ts" afterDir="false" />
@@ -240,7 +240,6 @@
       <change beforePath="$PROJECT_DIR$/client/node_modules/watchpack/lib/DirectoryWatcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/watchpack/lib/DirectoryWatcher.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/watchpack/lib/watcherManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/watchpack/lib/watcherManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/node_modules/watchpack/lib/watchpack.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/node_modules/watchpack/lib/watchpack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/color-name/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/color-name/.npmignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/color-name/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/color-name/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/color-name/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/color-name/README.md" afterDir="false" />
@@ -496,7 +495,6 @@
       <change beforePath="$PROJECT_DIR$/server/node_modules/urix/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/urix/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/urix/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/urix/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/urix/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/urix/test/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -511,11 +509,12 @@
     <session id="-1825058787">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -525,7 +524,7 @@
           <entry key="gitignore" value="1" />
           <entry key="html" value="4" />
           <entry key="js" value="85" />
-          <entry key="json" value="13" />
+          <entry key="json" value="15" />
           <entry key="md" value="1" />
         </counts>
       </usages-collector>
@@ -533,7 +532,7 @@
         <counts>
           <entry key="CSS" value="14" />
           <entry key="HTML" value="4" />
-          <entry key="JSON" value="13" />
+          <entry key="JSON" value="15" />
           <entry key="JavaScript" value="85" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
@@ -541,12 +540,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ReadMe" value="1960" />
+          <entry key="ReadMe" value="2111" />
           <entry key="css" value="5686" />
           <entry key="html" value="119" />
           <entry key="js" value="21518" />
           <entry key="json" value="11" />
-          <entry key="txt" value="489" />
+          <entry key="txt" value="532" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -555,7 +554,7 @@
           <entry key="HTML" value="119" />
           <entry key="JSON" value="11" />
           <entry key="JavaScript" value="21518" />
-          <entry key="PLAIN_TEXT" value="2449" />
+          <entry key="PLAIN_TEXT" value="2643" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -571,7 +570,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/portfolio/portfolio.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
+            <state relative-caret-position="2108">
               <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -583,7 +582,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/portfolio/searchBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1417">
+            <state relative-caret-position="248">
               <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -595,7 +594,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
+            <state relative-caret-position="3038">
               <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
             </state>
           </provider>
@@ -604,8 +603,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadMe">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+            <state relative-caret-position="465">
+              <caret line="15" column="63" lean-forward="true" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -838,7 +846,8 @@
       <updated>1543202858173</updated>
       <workItem from="1543202859472" duration="30736000" />
       <workItem from="1543547227573" duration="21339000" />
-      <workItem from="1544318778386" duration="24124000" />
+      <workItem from="1544318778386" duration="24164000" />
+      <workItem from="1544346279988" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="Initial">
       <created>1543210099769</created>
@@ -910,11 +919,18 @@
       <option name="project" value="LOCAL" />
       <updated>1544344958591</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added ReadMe for database setup">
+      <created>1544346236293</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1544346236293</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77727000" />
+    <option name="totallyTimeSpent" value="77834000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-8" width="1922" height="1089" extended-state="6" />
@@ -983,7 +999,8 @@
     <MESSAGE value="Restarted respository, so adding all the files back" />
     <MESSAGE value="Login and sign up management on the server-side is essentially done" />
     <MESSAGE value="Finished the portfolio page UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the portfolio page UI" />
+    <MESSAGE value="Added ReadMe for database setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ReadMe for database setup" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/signin.js" />
@@ -1017,13 +1034,6 @@
     <entry file="file://$PROJECT_DIR$/server/package-lock.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -1031,16 +1041,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/portfolio/navba.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/portfolio/navba.js" />
     <entry file="file://$PROJECT_DIR$/client/src/home/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,21 +1056,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/README.md" />
     <entry file="file://$PROJECT_DIR$/client/src/portfolio/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1076,9 +1071,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/portfolio/searchBAr.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/portfolio/searchBAr.js" />
     <entry file="file://$PROJECT_DIR$/client/src/home/sign_in_form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -1090,9 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-146">
           <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1124,9 +1114,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/portfolio/portfolio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2108">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/portfolio/searchBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1417">
+        <state relative-caret-position="248">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1134,13 +1134,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/portfolio/portfolio.js">
+    <entry file="file://$PROJECT_DIR$/server/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3038">
+          <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1151,17 +1148,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.js">
+    <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="98" column="34" lean-forward="true" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="34" />
+        <state relative-caret-position="651">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadMe">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+        <state relative-caret-position="465">
+          <caret line="15" column="63" lean-forward="true" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
         </state>
       </provider>
     </entry>
