@@ -2,9 +2,37 @@ const express = require('express');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const assert = require('assert');
+
+const MongoClient = require('mongodb').MongoClient;
+const mongo = require('mongodb');
+const mongoose = require('mongoose');
+const dbName = 'musicbear';
 
 const app = express();
 let xhr = new XMLHttpRequest();
+
+const dbURL = "mongodb://music:bear@localhost/topArtists";
+
+const client = new MongoClient(dbURL);
+client.connect(function(err) {
+  assert.equal(null, err);
+  console.log("MongoDB Connected...");
+
+  const db = client.db(dbName);
+
+  client.close();
+});
+
+// mongoose
+//     .connect(db)
+//     .then(() => console.log("MongoDB Connected..."))
+//     .catch((err => console.log(err)));
+//
+// const artistSchema = new Schema({
+//     name
+// })
+// mongoose.model("artist", artistSchema)
 
 //API Key
 let key = '124c939e27d006e5ebfdceb6be5bb0ec';
