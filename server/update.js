@@ -35,7 +35,6 @@ function update() {
                   collection.updateOne({ name: item.name.toLowerCase() }
                       , { $push: { listeners : item.listeners } }, function(err, result) {
                       assert.equal(err, null);
-                      assert.equal(1, result.result.n);
                       // console.log(util.format("Updated the document with the field %s equal to %d", item.name.toLowerCase(), item.listeners));
                     });
 

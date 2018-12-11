@@ -32,6 +32,34 @@ const findtopArtists = function(db, callback) {
     callback(docs);
   });
 }
+
+const findArtist = function(db, artist, callback) {
+  // Get the documents collection
+  const collection = db.collection('topArtists');
+  console.log(collection.find()+"==============================");
+  // Find some documents
+  collection.find({'name': artist}).toArray(function(err, docs) {
+    console.log(docs);
+    callback(docs);
+  });
+}
+
+const findUser = function(db, user, callback) {
+  // Get the documents collection
+  const collection = db.collection('users');
+  // Find some documents
+  collection.find({'username': user}).next(function(err, docs) {
+    console.log(docs==null);
+    callback(docs);
+  });
+}
+// client.connect(function(err) {
+//   assert.equal(null, err);
+//   const db = client.db(dbName);
+//   var user = findUser(db, 'ynke', function() {
+//       client.close();
+//   });
+// });
 // const client = new MongoClient(dbURL);
 // client.connect(function(err) {
 //   assert.equal(null, err);
@@ -104,13 +132,11 @@ app.get('/api/artistlist', (req, res) => {
     client.connect(function(err) {
       assert.equal(null, err);
       const db = client.db(dbName);
-      var topArtists = findtopArtists(db, function() {
+      findtopArtists(db, function(topArtists) {
+          res.send(topArtists);
           client.close();
       });
-      console.log("where am I??????????????????????");
     });
-    console.log("where am I??????????????????????");
-    res.send(topArtists);
 });
 
 // Hashing algorithm for password
@@ -126,56 +152,106 @@ String.prototype.hashCode = function () {
 };
 
 // TEMPORARY USERBASE <-- PETER, REPLACE THIS WITH MONGODB DATABASE
-let users = [{'username': 'yunke', 'password': '-383459980'}]; //password: xiao
+// let users = [{'username': 'yunke', 'password': '-383459980'}]; //password: xiao
 
 // Manage POST requests for new users
 // BUGS: Any post request after the first one crashes. The request body is empty for some reason.
 app.post('/api/users', (req, res) => {
-    console.log(req);
+    // console.log(req);
     //Checks if username already exists
-    let userExists = false;
-    for (let item of users){
-        if (item.username === req.body.username){
-            userExists = true;
-            break;
-        }
-    }
-    if (!userExists){
-        let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
-        res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
-        users.push(user);
-    } else {
-        res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
-    }
+    // var user;
 
+    client.connect(function(err) {
+      assert.equal(null, err);
+      const db = client.db(dbName);
+      findUser(db, req.body.username, function(user) {
+          if (user===null){
+              let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
+              res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
+
+              assert.equal(null, err);
+              const db = client.db(dbName);
+              db.collection('users').insertOne(user, function(err) {
+                  assert.equal(null, err);
+                  client.close();
+              });
+
+          } else {
+              res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
+          }
+          client.close();
+      });
+    });
+
+    // if (user===null){
+    //     let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
+    //     res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
+    //     client.connect(function(err) {
+    //         assert.equal(null, err);
+    //         const db = client.db(dbName);
+    //         db.collection('users').insertOne(user, function(err) {
+    //             assert.equal(null, err);
+    //             client.close();
+    //         });
+    //     });
+    // } else {
+    //     res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
+    // }
+    // client.close();
 });
 
 // Manage sign in process
 app.get('/api/users', (req, res) => {
     let password = req.query.password;
     let username = req.query.username;
-    let user = null;
-    for (let item of users) {
-        if (item.username === username) {
-            user = item;
-            break;
-        }
-    }
+    console.log(req.query, req.query.password)
+    // let user;
+    // for (let item of users) {
+    //     if (item.username === username) {
+    //         user = item;
+    //         break;
+    //     }
+    // }
+    client.connect(function(err) {
+      assert.equal(null, err);
+      const db = client.db(dbName);
+      user = findUser(db, username, function(user) {
+          client.close();
+          res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
+
+      });
+    });
     // answer = true when user exists and password matches, false otherwise
-    res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
+    // res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
 });
 
 // Manage user searches
 app.get('/api/artists', (req, res) => {
-   let artistList = [];
-   let search = (req.query.search).toString().toLowerCase().replace('+', ' ');
-   // search = search.toLowerCase().replace('+', ' ');
-   for (let artist of topArtists){
-       if(artist.name.indexOf(search) !== -1){
-           artistList.push(artist);
-       }
-   }
-   res.json(artistList);
+   //  console.log(req.query);
+   // // search = search.toLowerCase().replace('+', ' ');
+   //  MongoClient.connect("mongodb://music:bear@localhost/topArtists", function(err, db) {
+   //      let artistList = [];
+   //      let search = (req.query.search).toString().toLowerCase().replace('+', ' ');
+   //      assert.equal(null, err);
+   //      console.log(db);
+   //      db.topArtists.find(search).toArray( function(artists) {
+   //          array.forEach(function(artist) {
+   //              artistList.push(artist.name);
+   //          });
+   //          res.json(artistList);
+   //          db.close();
+   //      });
+   //  });
+    let search = (req.query.search).toString().toLowerCase().replace('+', ' ');
+    client.connect(function(err) {
+      assert.equal(null, err);
+      const db = client.db(dbName);
+      findArtist(db, search, function(artists) {
+
+          res.send(artists);
+          client.close();
+      });
+    });
 });
 
 const port = 5000;
