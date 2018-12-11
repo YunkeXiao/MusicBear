@@ -3,7 +3,9 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const assert = require('assert');
-
+const util = require('util');
+const setIntervalPromise = util.promisify(setInterval);
+const updatemodule = require("./update.js");
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
@@ -11,18 +13,56 @@ const dbName = 'musicbear';
 
 const app = express();
 let xhr = new XMLHttpRequest();
+let update = new updatemodule();
 
 const dbURL = "mongodb://music:bear@localhost/topArtists";
-
 const client = new MongoClient(dbURL);
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("MongoDB Connected...");
+let key = '124c939e27d006e5ebfdceb6be5bb0ec'; //API Key
 
-  const db = client.db(dbName);
+setIntervalPromise(function(){update()}, 3600000)
+    // .then(data => console.log(data))
+    // .catch(err => console.error(`[Error]: ${err}`));
 
-  client.close();
-});
+const findtopArtists = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('topArtists');
+  // Find some documents
+  collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    callback(docs);
+  });
+}
+// const client = new MongoClient(dbURL);
+// client.connect(function(err) {
+//   assert.equal(null, err);
+//   console.log("MongoDB Connected...");
+//
+//   const db = client.db(dbName);
+//
+//   insertDocuments(db, function() {
+//     client.close();
+//   });
+// });
+//
+// const updateDocuments = function(db, callback) {
+//   // Get the documents collection
+//   const collection = db.collection('topArtists');
+//   // Insert some documents
+//
+//   let maxPage = 4;
+//   for (let page = 1; page <= maxPage; page++) {
+//       let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
+//           "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=50&page=" + page;
+//       xhr.open("GET", url, false);
+//       xhr.onload = function () {
+//           let json = JSON.parse(this.responseText);
+//           json['artists']['artist'].forEach((item) => {
+//               topArtists.push({name: item.name.toLowerCase(), listeners: item.listeners})
+//           });
+//       };
+//       xhr.send();
+//   }
+// }
 
 // mongoose
 //     .connect(db)
@@ -33,9 +73,6 @@ client.connect(function(err) {
 //     name
 // })
 // mongoose.model("artist", artistSchema)
-
-//API Key
-let key = '124c939e27d006e5ebfdceb6be5bb0ec';
 
 // Body parser
 app.use(bodyParser.json());
@@ -64,7 +101,16 @@ for (let page = 1; page <= maxPage; page++) {
 
 // API for artists
 app.get('/api/artistlist', (req, res) => {
-    res.json(topArtists);
+    client.connect(function(err) {
+      assert.equal(null, err);
+      const db = client.db(dbName);
+      var topArtists = findtopArtists(db, function() {
+          client.close();
+      });
+      console.log("where am I??????????????????????");
+    });
+    console.log("where am I??????????????????????");
+    res.send(topArtists);
 });
 
 // Hashing algorithm for password
