@@ -248,7 +248,7 @@ app.get('/api/artists', (req, res) => {
       const db = client.db(dbName);
       findArtist(db, search, function(artists) {
 
-          res.send(artists);
+          res.send(artists.slice(-8, artists.length));
           client.close();
       });
     });
