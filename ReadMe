@@ -12,5 +12,12 @@ should follow the Last.fm Web API convention: every character is lowercase and s
 and it should contain the attribute 'listeners', which should be an array of the number of listeners to the specified
 artist the past 7 days (excluding the current day).
 
+TODO:
+
+- Add labels to graphs
+- Fix backend
+- Hash username
+- Fix API (page query)
+
 To run the server/client/both, refer to the package.json in the server folder.
 'npm run server', 'npm run client', 'npm run dev', respectively
