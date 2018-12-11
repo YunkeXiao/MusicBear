@@ -15,7 +15,8 @@ artist the past 7 days (excluding the current day).
 TODO:
 
 - Add labels to graphs
-- Fix backend
+- Make monDB run
+- Fix search empty
 - Hash username
 - Fix API (page query)
 
