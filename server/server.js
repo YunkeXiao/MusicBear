@@ -36,10 +36,10 @@ const findtopArtists = function(db, callback) {
 const findArtist = function(db, artist, callback) {
   // Get the documents collection
   const collection = db.collection('topArtists');
-  console.log(collection.find()+"==============================");
+  // console.log(collection.find()+"==============================");
   // Find some documents
   collection.find({'name': artist}).toArray(function(err, docs) {
-    console.log(docs);
+    // console.log(docs);
     callback(docs);
   });
 }
