@@ -10,12 +10,15 @@ const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
 const dbName = 'musicbear';
+const path = require("path");
+require("dotenv").config();
 
 const app = express();
+app.use(express.static(path.join(__dirname, "client", "build")));
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
-const dbURL = "mongodb://music:bear@localhost/topArtists";
+const dbURL = "process.env.MONGODB_URI";
 const client = new MongoClient(dbURL);
 let key = '124c939e27d006e5ebfdceb6be5bb0ec'; //API Key
 
@@ -115,8 +118,8 @@ app.use(cors({credentials: true, origin: true}));
 let topArtists = [];
 let maxPage = 4;
 for (let page = 1; page <= maxPage; page++) {
-    let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
-        "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=50&page=" + page;
+    let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
+        "key + "&format=json&limit=50&page=" + page;
     xhr.open("GET", url, false);
     xhr.onload = function () {
         let json = JSON.parse(this.responseText);
@@ -254,5 +257,8 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-const port = 5000;
+const port = process.env.PORT
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 app.listen(port, () => `Server running on port ${port}`);
