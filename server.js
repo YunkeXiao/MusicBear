@@ -20,7 +20,7 @@ let update = new updatemodule();
 
 const dbURL = "process.env.MONGODB_URI";
 const client = new MongoClient(dbURL);
-let key = '124c939e27d006e5ebfdceb6be5bb0ec'; //API Key
+let key = 'process.env.key'; //API Key
 
 setIntervalPromise(function(){update()}, 3600000)
     // .then(data => console.log(data))
@@ -119,7 +119,7 @@ let topArtists = [];
 let maxPage = 4;
 for (let page = 1; page <= maxPage; page++) {
     let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
-        "key + "&format=json&limit=50&page=" + page;
+        key + "&format=json&limit=50&page=" + page;
     xhr.open("GET", url, false);
     xhr.onload = function () {
         let json = JSON.parse(this.responseText);
