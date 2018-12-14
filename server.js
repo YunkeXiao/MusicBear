@@ -14,7 +14,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(express.static(path.join(__dirname, "client", "public")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
