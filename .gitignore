@@ -9,6 +9,8 @@ node_modules/
 # testing
 coverage
 client/debug.log
+.env
+.env.default
 
 # production
 build

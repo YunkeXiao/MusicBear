@@ -9,6 +9,8 @@ const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
 const dbName = 'musicbear';
+require("dotenv").config();
+const KEY = process.env.KEY; //API Key
 
 function update() {
     let xhr = new XMLHttpRequest();
@@ -25,8 +27,8 @@ function update() {
       // Insert some documents
 
       for (let page = 1; page <= maxPage; page++) {
-          let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
-              "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=50&page=" + page;
+          let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
+              KEY + "&format=json&limit=50&page=" + page;
           xhr.open("GET", url, false);
           xhr.onload = function () {
               let json = JSON.parse(this.responseText);

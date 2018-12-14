@@ -14,13 +14,19 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use(express.static(path.join(__dirname, "client", "build")));
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
-const dbURL = "process.env.MONGODB_URI";
-const client = new MongoClient(dbURL);
-let key = 'process.env.key'; //API Key
+const KEY = process.env.KEY; //API Key
+const MONGODB_URI = process.env.MONGODB_URI;
+const PORT = process.env.PORT;
+const client = new MongoClient(MONGODB_URI);
+
+console.log(KEY);
+console.log(MONGODB_URI);
+console.log(PORT);
+
 
 setIntervalPromise(function(){update()}, 3600000)
     // .then(data => console.log(data))
@@ -75,25 +81,6 @@ const findUser = function(db, user, callback) {
 //   });
 // });
 //
-// const updateDocuments = function(db, callback) {
-//   // Get the documents collection
-//   const collection = db.collection('topArtists');
-//   // Insert some documents
-//
-//   let maxPage = 4;
-//   for (let page = 1; page <= maxPage; page++) {
-//       let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
-//           "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=50&page=" + page;
-//       xhr.open("GET", url, false);
-//       xhr.onload = function () {
-//           let json = JSON.parse(this.responseText);
-//           json['artists']['artist'].forEach((item) => {
-//               topArtists.push({name: item.name.toLowerCase(), listeners: item.listeners})
-//           });
-//       };
-//       xhr.send();
-//   }
-// }
 
 // mongoose
 //     .connect(db)
@@ -115,20 +102,20 @@ app.use(bodyParser.urlencoded({
 app.use(cors({credentials: true, origin: true}));
 
 // Get top artists' name and listenercount <-- PETER REPLACE THIS WITH MONGODB DATABASE
-let topArtists = [];
-let maxPage = 4;
-for (let page = 1; page <= maxPage; page++) {
-    let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
-        key + "&format=json&limit=50&page=" + page;
-    xhr.open("GET", url, false);
-    xhr.onload = function () {
-        let json = JSON.parse(this.responseText);
-        json['artists']['artist'].forEach((item) => {
-            topArtists.push({name: item.name.toLowerCase(), listeners: item.listeners})
-        });
-    };
-    xhr.send();
-}
+// let topArtists = [];
+// let maxPage = 4;
+// for (let page = 1; page <= maxPage; page++) {
+    // let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
+    //     key + "&format=json&limit=50&page=" + page;
+//     xhr.open("GET", url, false);
+//     xhr.onload = function () {
+//         let json = JSON.parse(this.responseText);
+//         json['artists']['artist'].forEach((item) => {
+//             topArtists.push({name: item.name.toLowerCase(), listeners: item.listeners})
+//         });
+//     };
+//     xhr.send();
+// }
 
 // API for artists
 app.get('/api/artistlist', (req, res) => {
@@ -257,8 +244,7 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-const port = process.env.PORT
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(PORT, () => `Server running on port ${PORT}`);
