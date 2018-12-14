@@ -11,11 +11,11 @@ const mongoose = require('mongoose');
 const dbName = 'musicbear';
 require("dotenv").config();
 const KEY = process.env.KEY; //API Key
+const MONGODB_URI = process.env.MONGODB_URI;
 
 function update() {
     let xhr = new XMLHttpRequest();
-    const dbURL = "mongodb://music:bear@localhost/topArtists";
-    const client = new MongoClient(dbURL);
+    const client = new MongoClient(MONGODB_URI);
 
     client.connect(function(err) {
       assert.equal(null, err);
