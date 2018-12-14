@@ -245,6 +245,6 @@ app.get('/api/artists', (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "src", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "public", "index.html"));
 });
 app.listen(PORT, () => `Server running on port ${PORT}`);
