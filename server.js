@@ -14,7 +14,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "client", "public")));
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
@@ -244,7 +244,7 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-app.use("*", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "public", "index.html"));
 });
 app.listen(PORT, () => `Server running on port ${PORT}`);
