@@ -9,7 +9,7 @@ const updatemodule = require("./update.js");
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
-const dbName = 'musicbear';
+const dbName = 'heroku_wlmwvdfs';
 const path = require("path");
 require("dotenv").config();
 

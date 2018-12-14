@@ -8,13 +8,16 @@ const util = require('util');
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
-const dbName = 'musicbear';
+const dbName = 'heroku_wlmwvdfs';
+
 require("dotenv").config();
 const KEY = process.env.KEY; //API Key
 const MONGODB_URI = process.env.MONGODB_URI;
 
 function update() {
     let xhr = new XMLHttpRequest();
+    // const client = new MongoClient(MONGODB_URI);
+    console.log(MONGODB_URI);
     const client = new MongoClient(MONGODB_URI);
 
     client.connect(function(err) {
@@ -22,7 +25,8 @@ function update() {
       console.log("MongoDB update Connected...");
       let maxPage = 4;
 
-      const db = client.db(dbName);
+      const db = client.db(dbName)
+      console.log(db.__proto__);
       const collection = db.collection('topArtists');
       // Insert some documents
 
