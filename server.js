@@ -102,7 +102,7 @@ String.prototype.hashCode = function () {
 // Zhiding
 
 app.post('/api/users', (req, res) => {
-    console.log(req.body);
+    username = req.body.username.hashCode().toString();
     //Checks if username already exists
     // var user;
     console.log("-----------------------------------");
@@ -110,10 +110,10 @@ app.post('/api/users', (req, res) => {
     client.connect(function(err) {
       assert.equal(null, err);
       const db = client.db(dbName);
-      findUser(db, req.body.username, function(user) {
+      findUser(db, username, function(user) {
           console.log("user = " + user);
           if (user===null){
-              let user = {'username': req.body.username.hashCode().toString(), 'password': req.body.password.hashCode().toString()};
+              let user = {'username': username, 'password': req.body.password.hashCode().toString()};
               res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
 
               assert.equal(null, err);
