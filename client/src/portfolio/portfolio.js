@@ -44,11 +44,15 @@ class Portfolio extends React.PureComponent {
 
     //BUGS: NEED DATABASE
     chooseArtist = (name, listeners) => {
+        // console.log(name,listeners);
         let newData = exampleData;
-        newData['datasets'][0]['label'] = helpers.capitalize(name);
-        newData['datasets'][0]['data'] = [listeners, listeners, listeners, listeners, listeners, listeners, listeners];
+            newData['datasets'][0]['label'] = helpers.capitalize(name);
+        if (name === 'Eminem'){
+            newData['datasets'][0]['data'] = [listeners[0], listeners[1], listeners[2], listeners[3], listeners[4], listeners[5], listeners[6]];
+        }
+        else {newData['datasets'][0]['data'] = [listeners, listeners, listeners, listeners, listeners, listeners, listeners];
+        }
         newData['labels'] = helpers.getPastWeek().split(',');
-        console.log(helpers.getPastWeek());
         this.setState({chartOptions: newData});
         this.forceUpdate();
     };
@@ -64,7 +68,24 @@ class Portfolio extends React.PureComponent {
                             data={this.state.chartOptions}
                             options={{
                                 maintainAspectRatio: false,
-                                animation: false,
+                                animation: false, scales: {
+                                    xAxes: [
+                                        {
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Date'
+                                            },
+                                        }
+                                    ],
+                                    yAxes: [
+                                        {
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Listener Count'
+                                            },
+                                        }
+                                    ]
+                                }
                             }}
                         />
                     </div>

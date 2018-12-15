@@ -86,6 +86,24 @@ function Landing(props) {
                         options={{
                             maintainAspectRatio: false,
                             animation: false,
+                            scales: {
+                                xAxes: [
+                                    {
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Date'
+                                        },
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Listener Count'
+                                        },
+                                    }
+                                ]
+                            }
                         }}
                     />
                 </div>

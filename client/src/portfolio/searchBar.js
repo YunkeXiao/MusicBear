@@ -20,7 +20,8 @@ class SearchBar extends React.PureComponent {
 
     // Look for artists using indexOf on our database of artists
     searchArtist = (search) => {
-        let url = 'http://localhost:5000/api/artists/?search=' + search.replace(' ', '+');
+        let url = 'https://musicbear.herokuapp.com/api/artists/?search=' + search.replace(' ', '+');
+        // let url = 'http://localhost:5000/api/artists/?search=' + search.replace(' ', '+');
         xhr.open('GET', url, true);
         xhr.onload = () => {
             let json = JSON.parse(xhr.responseText);
@@ -43,7 +44,6 @@ class SearchBar extends React.PureComponent {
             }
         })();
         this.props.chooseArtist(artist.name, artist.listeners);
-        console.log(artist);
     };
 
     handleSubmit() {

@@ -13,7 +13,7 @@ class Home extends React.PureComponent {
         super(props);
         this.choosePage = this.choosePage.bind(this);
         this.state = {
-            page: 3,
+            page: 0,
             isUnmounted: true
         }
     }
