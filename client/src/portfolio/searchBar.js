@@ -20,7 +20,7 @@ class SearchBar extends React.PureComponent {
 
     // Look for artists using indexOf on our database of artists
     searchArtist = (search) => {
-        let url = 'http://localhost:5000/api/artists/?search=' + search.replace(' ', '+');
+        let url = '/api/artists/?search=' + search.replace(' ', '+');
         xhr.open('GET', url, true);
         xhr.onload = () => {
             let json = JSON.parse(xhr.responseText);

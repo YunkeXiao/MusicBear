@@ -50,7 +50,7 @@ class SignupForm extends React.PureComponent {
 
     // Manages POST request
     sendPost = (username, password) => {
-        let url = 'http://localhost:5000/api/users';
+        let url = '/api/users';
         xhr.open('POST', url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = () => {

@@ -48,7 +48,7 @@ class LoginForm extends React.PureComponent {
     // Checks password
     confirmPassword = (username, password) => {
         let correctPassword;
-        let url = 'http://localhost:5000/api/users/?username=' + username + '&password=' + password.hashCode().toString();
+        let url = '/api/users/?username=' + username + '&password=' + password.hashCode().toString();
         xhr.open('GET', url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = () => {
