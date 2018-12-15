@@ -1,7 +1,6 @@
 import React from 'react';
 
 let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-let xhr = new XMLHttpRequest();
 
 String.prototype.hashCode = function () {
     let hash = 0, i, chr;
@@ -50,8 +49,8 @@ class SignupForm extends React.PureComponent {
 
     // Manages POST request
     sendPost = (username, password) => {
-        // let url = 'https://musicbear.herokuapp.com/api/users';
-        let url = 'http://localhost:5000/api/users';
+        let url = 'https://musicbear.herokuapp.com/api/users';
+        // let url = 'http://localhost:5000/api/users';
 
         let xhr = new XMLHttpRequest();
 

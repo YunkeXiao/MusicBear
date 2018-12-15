@@ -30,28 +30,26 @@ function update() {
       const collection = db.collection('topArtists');
       // Insert some documents
 
-      for (let page = 1; page <= maxPage; page++) {
-          let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
-              KEY + "&format=json&limit=50&page=" + page;
-          xhr.open("GET", url, false);
-          xhr.onload = function () {
-              let json = JSON.parse(this.responseText);
-              json['artists']['artist'].forEach((item) => {
+      let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
+          KEY + "&format=json&limit=50&page=10";
+      xhr.open("GET", url, false);
+      xhr.onload = function () {
+          let json = JSON.parse(this.responseText);
+          json['artists']['artist'].forEach((item) => {
 
-                  collection.updateOne({ name: item.name.toLowerCase() }
-                      , { $push: { listeners : item.listeners } }, function(err, result) {
-                      assert.equal(err, null);
-                      // console.log(util.format("Updated the document with the field %s equal to %d", item.name.toLowerCase(), item.listeners));
-                    });
+              collection.updateOne({ name: item.name.toLowerCase() }
+                  , { $push: { listeners : item.listeners } }, function(err, result) {
+                  assert.equal(err, null);
+                  // console.log(util.format("Updated the document with the field %s equal to %d", item.name.toLowerCase(), item.listeners));
+                });
 
-                  // collection.insertOne({name: item.name.toLowerCase(), listeners: [item.listeners]}, function(err, r) {
-                  //   assert.equal(null, err);
-                  //   assert.equal(1, r.insertedCount);
-                  //   });
-              });
-          };
-          xhr.send();
+              // collection.insertOne({name: item.name.toLowerCase(), listeners: [item.listeners]}, function(err, r) {
+              //   assert.equal(null, err);
+              //   assert.equal(1, r.insertedCount);
+              //   });
+          });
       };
+      xhr.send();
       client.close();
     });
 }

@@ -7,13 +7,13 @@ const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const mongoose = require('mongoose');
-const dbName = 'musicbear';
+const dbName = 'heroku_wlmwvdfs';
 
 let xhr = new XMLHttpRequest();
 
-const dbURL = "mongodb://music:bear@localhost/topArtists";
+const mongodb_uri = "mongodb://heroku_wlmwvdfs:9ffp8tbs3o7vgraijse4eh8rdb@ds011863.mlab.com:11863/heroku_wlmwvdfs";
 
-const client = new MongoClient(dbURL);
+const client = new MongoClient(mongodb_uri);
 client.connect(function(err) {
     assert.equal(null, err);
     console.log("MongoDB Connected...");
@@ -23,23 +23,23 @@ client.connect(function(err) {
     const collection = db.collection('topArtists');
     // Insert some documents
 
-    for (let page = 1; page <= maxPage; page++) {
-        let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
-            "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=50&page=" + page;
-        xhr.open("GET", url, false);
-        xhr.onload = function() {
-            let json = JSON.parse(this.responseText);
-            json['artists']['artist'].forEach((item) => {
-                collection.insertOne({
-                    name: item.name.toLowerCase(),
-                    listeners: [item.listeners]
-                }, function(err, r) {
-                    assert.equal(null, err);
-                    assert.equal(1, r.insertedCount);
-                });
+
+    let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_" +
+        "key=124c939e27d006e5ebfdceb6be5bb0ec&format=json&limit=500&page=10";
+    xhr.open("GET", url, false);
+    xhr.onload = function() {
+        let json = JSON.parse(this.responseText);
+        json['artists']['artist'].forEach((item) => {
+            collection.insertOne({
+                name: item.name.toLowerCase(),
+                listeners: [item.listeners]
+            }, function(err, r) {
+                assert.equal(null, err);
+                assert.equal(1, r.insertedCount);
             });
-        };
-        xhr.send();
+        });
     };
-    client.close();
+    xhr.send();
+
+
 });

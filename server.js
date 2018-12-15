@@ -32,6 +32,7 @@ setIntervalPromise(function(){update()}, 3600000)
     // .then(data => console.log(data))
     // .catch(err => console.error(`[Error]: ${err}`));
 
+
 const findtopArtists = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('topArtists');
@@ -42,13 +43,14 @@ const findtopArtists = function(db, callback) {
   });
 }
 
-const findArtist = function(db, artist, callback) {
+const findArtist = function(db, name, callback) {
   // Get the documents collection
   const collection = db.collection('topArtists');
   // console.log(collection.find()+"==============================");
   // Find some documents
-  collection.find({'name': artist}).toArray(function(err, docs) {
+  collection.find({'name': {$regex: `${name}`, $options:"i"}}).toArray(function(err, docs) {
     // console.log(docs);
+
     callback(docs);
   });
 }
@@ -101,22 +103,6 @@ app.use(bodyParser.urlencoded({
 // Enables CORS
 app.use(cors({credentials: true, origin: true}));
 
-// Get top artists' name and listenercount <-- PETER REPLACE THIS WITH MONGODB DATABASE
-// let topArtists = [];
-// let maxPage = 4;
-// for (let page = 1; page <= maxPage; page++) {
-    // let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
-    //     key + "&format=json&limit=50&page=" + page;
-//     xhr.open("GET", url, false);
-//     xhr.onload = function () {
-//         let json = JSON.parse(this.responseText);
-//         json['artists']['artist'].forEach((item) => {
-//             topArtists.push({name: item.name.toLowerCase(), listeners: item.listeners})
-//         });
-//     };
-//     xhr.send();
-// }
-
 // API for artists
 app.get('/api/artistlist', (req, res) => {
     client.connect(function(err) {
@@ -124,7 +110,6 @@ app.get('/api/artistlist', (req, res) => {
       const db = client.db(dbName);
       findtopArtists(db, function(topArtists) {
           res.send(topArtists);
-          client.close();
       });
     });
 });
@@ -165,12 +150,10 @@ app.post('/api/users', (req, res) => {
               const db = client.db(dbName);
               db.collection('users').insertOne(user, function(err) {
                   assert.equal(null, err);
-                  client.close();
               });
 
           } else {
               res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
-              client.close();
           }
       });
     });
@@ -211,7 +194,6 @@ app.get('/api/users', (req, res) => {
       console.log("askdhaksjdahjskladgshjkadsbghjknfgghjkldfgshjkladfsghijklaeshijklgfashjkladfgshjlkadfsghjkladfsghjk");
       const db = client.db(dbName);
       user = findUser(db, username, function(user) {
-          client.close();
           res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
 
       });
@@ -243,8 +225,7 @@ app.get('/api/artists', (req, res) => {
       const db = client.db(dbName);
       findArtist(db, search, function(artists) {
 
-          res.json(artists.slice(-8, artists.length));
-          client.close();
+          res.json(artists);
       });
     });
 });

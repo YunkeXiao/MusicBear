@@ -1,7 +1,6 @@
 import React from 'react';
 
 let XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-let xhr = new XMLHttpRequest();
 
 // Hashing algorithm for password
 String.prototype.hashCode = function () {
@@ -48,9 +47,11 @@ class LoginForm extends React.PureComponent {
     // Checks password
     confirmPassword = (username, password) => {
         let correctPassword;
-        // let url = 'https://musicbear.herokuapp.com/api/users/?username=' + username + '&password=' + password.hashCode().toString();
+        let url = 'https://musicbear.herokuapp.com/api/users/?username=' + username + '&password=' + password.hashCode().toString();
 
-        let url = 'http://localhost:5000/api/users/?username=' + username + '&password=' + password.hashCode().toString();
+        // let url = 'http://localhost:5000/api/users/?username=' + username + '&password=' + password.hashCode().toString();
+        let xhr = new XMLHttpRequest();
+
         xhr.open('GET', url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = () => {
