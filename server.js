@@ -147,14 +147,16 @@ String.prototype.hashCode = function () {
 // Manage POST requests for new users
 // BUGS: Any post request after the first one crashes. The request body is empty for some reason.
 app.post('/api/users', (req, res) => {
-    // console.log(req);
+    console.log(req.body);
     //Checks if username already exists
     // var user;
-
+    console.log("-----------------------------------");
+    console.log(req.body);
     client.connect(function(err) {
       assert.equal(null, err);
       const db = client.db(dbName);
       findUser(db, req.body.username, function(user) {
+          console.log("user = " + user);
           if (user===null){
               let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
               res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
@@ -168,8 +170,8 @@ app.post('/api/users', (req, res) => {
 
           } else {
               res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
+              client.close();
           }
-          client.close();
       });
     });
 
@@ -192,10 +194,11 @@ app.post('/api/users', (req, res) => {
 
 // Manage sign in process
 app.get('/api/users', (req, res) => {
+
     let password = req.query.password;
     let username = req.query.username;
-    console.log("req.query req.query.password");
-    console.log(req.query, req.query.password);
+    // console.log("req.query req.query.password");
+    // console.log(req.query, req.query.password);
     // let user;
     // for (let item of users) {
     //     if (item.username === username) {
@@ -205,6 +208,7 @@ app.get('/api/users', (req, res) => {
     // }
     client.connect(function(err) {
       assert.equal(null, err);
+      console.log("askdhaksjdahjskladgshjkadsbghjknfgghjkldfgshjkladfsghijklaeshijklgfashjkladfgshjlkadfsghjkladfsghjk");
       const db = client.db(dbName);
       user = findUser(db, username, function(user) {
           client.close();
