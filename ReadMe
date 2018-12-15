@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Available at:
 https://musicbear.herokuapp.com/
 
@@ -28,3 +29,5 @@ https://musicbear.herokuapp.com/
 
 Security(Encryption Username/Password)
 Hashing of usernmane and password in database
+=======
+>>>>>>> f320855546032917999886668986a88cfc7defe3
