@@ -18,6 +18,7 @@ const app = express();
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
+// Zhiding
 const key = process.env.KEY; //API key
 const mongodb_uri = process.env.MONGODB_URI;
 const port = process.env.PORT;
@@ -64,35 +65,6 @@ const findUser = function(db, user, callback) {
     callback(docs);
   });
 }
-// client.connect(function(err) {
-//   assert.equal(null, err);
-//   const db = client.db(dbName);
-//   var user = findUser(db, 'ynke', function() {
-//       client.close();
-//   });
-// });
-// const client = new MongoClient(dbURL);
-// client.connect(function(err) {
-//   assert.equal(null, err);
-//   console.log("MongoDB Connected...");
-//
-//   const db = client.db(dbName);
-//
-//   insertDocuments(db, function() {
-//     client.close();
-//   });
-// });
-//
-
-// mongoose
-//     .connect(db)
-//     .then(() => console.log("MongoDB Connected..."))
-//     .catch((err => console.log(err)));
-//
-// const artistSchema = new Schema({
-//     name
-// })
-// mongoose.model("artist", artistSchema)
 
 // Body parser
 app.use(bodyParser.json());
@@ -114,6 +86,7 @@ app.get('/api/artistlist', (req, res) => {
     });
 });
 
+// Yunke
 // Hashing algorithm for password
 String.prototype.hashCode = function () {
     let hash = 0, i, chr;
@@ -126,11 +99,8 @@ String.prototype.hashCode = function () {
     return hash;
 };
 
-// TEMPORARY USERBASE <-- PETER, REPLACE THIS WITH MONGODB DATABASE
-// let users = [{'username': 'yunke', 'password': '-383459980'}]; //password: xiao
+// Zhiding
 
-// Manage POST requests for new users
-// BUGS: Any post request after the first one crashes. The request body is empty for some reason.
 app.post('/api/users', (req, res) => {
     console.log(req.body);
     //Checks if username already exists
@@ -157,22 +127,6 @@ app.post('/api/users', (req, res) => {
           }
       });
     });
-
-    // if (user===null){
-    //     let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
-    //     res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
-    //     client.connect(function(err) {
-    //         assert.equal(null, err);
-    //         const db = client.db(dbName);
-    //         db.collection('users').insertOne(user, function(err) {
-    //             assert.equal(null, err);
-    //             client.close();
-    //         });
-    //     });
-    // } else {
-    //     res.json({'username': req.body.username, 'password': req.body.password, 'error': '1'});
-    // }
-    // client.close();
 });
 
 // Manage sign in process
@@ -180,18 +134,9 @@ app.get('/api/users', (req, res) => {
 
     let password = req.query.password;
     let username = req.query.username;
-    // console.log("req.query req.query.password");
-    // console.log(req.query, req.query.password);
-    // let user;
-    // for (let item of users) {
-    //     if (item.username === username) {
-    //         user = item;
-    //         break;
-    //     }
-    // }
+
     client.connect(function(err) {
       assert.equal(null, err);
-      console.log("askdhaksjdahjskladgshjkadsbghjknfgghjkldfgshjkladfsghijklaeshijklgfashjkladfgshjlkadfsghjkladfsghjk");
       const db = client.db(dbName);
       user = findUser(db, username, function(user) {
           res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
@@ -202,23 +147,11 @@ app.get('/api/users', (req, res) => {
     // res.json({'answer': (user !== null && password.hashCode().toString() === user.password).toString()})
 });
 
+// TECHNOLOGY : PULL
 // Manage user searches
 app.get('/api/artists', (req, res) => {
    //  console.log(req.query);
-   // // search = search.toLowerCase().replace('+', ' ');
-   //  MongoClient.connect("mongodb://music:bear@localhost/topArtists", function(err, db) {
-   //      let artistList = [];
-   //      let search = (req.query.search).toString().toLowerCase().replace('+', ' ');
-   //      assert.equal(null, err);
-   //      console.log(db);
-   //      db.topArtists.find(search).toArray( function(artists) {
-   //          array.forEach(function(artist) {
-   //              artistList.push(artist.name);
-   //          });
-   //          res.json(artistList);
-   //          db.close();
-   //      });
-   //  });
+
     let search = (req.query.search).toString().toLowerCase().replace('+', ' ');
     client.connect(function(err) {
       assert.equal(null, err);

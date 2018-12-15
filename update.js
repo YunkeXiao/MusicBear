@@ -31,7 +31,7 @@ function update() {
       // Insert some documents
 
       let url = "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" +
-          KEY + "&format=json&limit=50&page=10";
+          KEY + "&format=json&limit=500&page=1";
       xhr.open("GET", url, false);
       xhr.onload = function () {
           let json = JSON.parse(this.responseText);
