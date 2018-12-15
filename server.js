@@ -113,7 +113,7 @@ app.post('/api/users', (req, res) => {
       findUser(db, req.body.username, function(user) {
           console.log("user = " + user);
           if (user===null){
-              let user = {'username': req.body.username, 'password': req.body.password.hashCode().toString()};
+              let user = {'username': req.body.username.hashCode().toString(), 'password': req.body.password.hashCode().toString()};
               res.json({'username': req.body.username, 'password': req.body.password, 'error': '0'});
 
               assert.equal(null, err);
@@ -133,7 +133,7 @@ app.post('/api/users', (req, res) => {
 app.get('/api/users', (req, res) => {
 
     let password = req.query.password;
-    let username = req.query.username;
+    let username = req.query.username.hashCode().toString();
 
     client.connect(function(err) {
       assert.equal(null, err);

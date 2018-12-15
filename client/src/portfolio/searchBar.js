@@ -44,7 +44,6 @@ class SearchBar extends React.PureComponent {
             }
         })();
         this.props.chooseArtist(artist.name, artist.listeners);
-        console.log(artist);
     };
 
     handleSubmit() {
