@@ -18,15 +18,15 @@ const app = express();
 let xhr = new XMLHttpRequest();
 let update = new updatemodule();
 
-const KEY = process.env.KEY; //API Key
-const MONGODB_URI = process.env.MONGODB_URI;
-const PORT = process.env.PORT;
-const client = new MongoClient(MONGODB_URI);
-
-console.log(KEY);
-console.log(MONGODB_URI);
-console.log(PORT);
-
+const key = process.env.KEY; //API key
+const mongodb_uri = process.env.MONGODB_URI;
+const port = process.env.PORT;
+const client = new MongoClient(mongodb_uri);
+console.log("<ENV>");
+console.log("key " + key);
+console.log("mongodb_uri " + mongodb_uri);
+console.log("port " +port);
+console.log("</ENV>");
 
 setIntervalPromise(function(){update()}, 3600000)
     // .then(data => console.log(data))
@@ -194,7 +194,8 @@ app.post('/api/users', (req, res) => {
 app.get('/api/users', (req, res) => {
     let password = req.query.password;
     let username = req.query.username;
-    console.log(req.query, req.query.password)
+    console.log("req.query req.query.password");
+    console.log(req.query, req.query.password);
     // let user;
     // for (let item of users) {
     //     if (item.username === username) {
@@ -244,7 +245,17 @@ app.get('/api/artists', (req, res) => {
     });
 });
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client", "public", "index.html"));
-// });
-app.listen(PORT, () => `Server running on port ${PORT}`);
+// Server static assets if in production
+
+if(process.env.NODE_ENV === "production") {
+    // Set static folder
+    app.use(express.static("client/build"));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
+
+console.log("====================================================================")
+app.listen(port, () => `Server running on port ${port}`);
+console.log("====================================================================")

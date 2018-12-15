@@ -17,7 +17,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 function update() {
     let xhr = new XMLHttpRequest();
     // const client = new MongoClient(MONGODB_URI);
-    console.log(MONGODB_URI);
+    console.log("MONGODB_URI " + MONGODB_URI);
     const client = new MongoClient(MONGODB_URI);
 
     client.connect(function(err) {
@@ -26,7 +26,7 @@ function update() {
       let maxPage = 4;
 
       const db = client.db(dbName)
-      console.log(db.__proto__);
+      // console.log(db.__proto__);
       const collection = db.collection('topArtists');
       // Insert some documents
 
